@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown Timer</title>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  #countdown {
-    font-size: 48px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 20px;
-  }
-  .title{
-    font-size: 20px;
-     font-weight: bold;
-  }
-</style>
-</head>
-<body>
-<div class="title">Wido & Tomi Wedding Day</div>
-<div id="countdown"></div>
-<audio controls autoplay>
-    <source src="/audio/untilifoundyou.mp3" type="audio/mp4">
-  </audio>
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("June 22, 2024 09:00:00").getTime();
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #countdown {
+        font-size: 48px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+      }
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">Wido & Tomi Wedding Day</div>
+    <div id="countdown"></div>
+    <audio id="myAudio" autoplay loop controls>
+      <source src="/audio/untilifoundyou.mp3" type="audio/mp3" />
+    </audio>
+    <script>
+        var x = document.getElementById("myAudio");
 
-// Update the countdown every 1 second
-var x = setInterval(function() {
+        function enableAutoplay() { 
+          x.load();
+          x.play()
+        }
+        
+        window.onload =setTimeout(enableAutoplay, 3000);
 
-  // Get the current date and time
-  var now = new Date().getTime();
+      // Set the date we're counting down to
+      var countDownDate = new Date("June 22, 2024 09:00:00").getTime();
 
-  // Calculate the distance between now and the countdown date
-  var distance = countDownDate - now;
+      // Update the countdown every 1 second
+      var x = setInterval(function () {
+        // Get the current date and time
+        var now = new Date().getTime();
 
-  // Calculate days, hours, minutes, and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Calculate the distance between now and the countdown date
+        var distance = countDownDate - now;
 
-  // Display the result
-  document.getElementById("countdown").innerHTML =  days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+        // Calculate days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // If the countdown is over, display a message
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "WEDDING DAY";
-  }
-}, 1000);
-</script>
-</body>
+        // Display the result
+        document.getElementById("countdown").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the countdown is over, display a message
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "WEDDING DAY";
+        }
+      }, 1000);
+      audioElement.play();
+    </script>
+  </body>
 </html>
