@@ -31,19 +31,16 @@
   <body>
     <div class="title">Wido & Tomi Wedding Day</div>
     <div id="countdown"></div>
-    <audio id="myAudio" autoplay loop controls>
+    <audio id="myAudio" loop>
       <source src="/audio/untilifoundyou.mp3" type="audio/mp3" />
     </audio>
     <script>
-        var x = document.getElementById("myAudio");
+      var myAudio = document.getElementById("myAudio");
 
-        function enableAutoplay() { 
-          x.load();
-          x.play()
-        }
-        
-        window.onload =setTimeout(enableAutoplay, 3000);
-
+     
+        myAudio.autoplay = true;
+        myAudio.load();
+    
       // Set the date we're counting down to
       var countDownDate = new Date("June 22, 2024 09:00:00").getTime();
 
@@ -73,7 +70,6 @@
           document.getElementById("countdown").innerHTML = "WEDDING DAY";
         }
       }, 1000);
-      audioElement.play();
     </script>
   </body>
 </html>
